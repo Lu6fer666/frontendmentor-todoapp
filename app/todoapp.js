@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".addTodo");
     const tasksList = document.querySelector(".tasks");
     const deleteCompletedButton = document.querySelector(".itemsleft__btnclear");
@@ -36,15 +36,16 @@ document.addEventListener("DOMContentLoaded", function() {
         checkbox.type = "checkbox";
         checkbox.checked = completed;
 
-        checkbox.addEventListener("change", function() {
+        checkbox.addEventListener("change", function () {
             taskItem.classList.toggle("completed");
             updateItemsLeftCounter();
             saveTasksToLocalStorage();
         });
 
         const deleteButton = document.createElement("button");
-        deleteButton.textContent = "X";
-        deleteButton.addEventListener("click", function() {
+        deleteButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>`;
+        deleteButton.classList.add("tasks__button");
+        deleteButton.addEventListener("click", function () {
             tasksList.removeChild(taskItem);
             updateItemsLeftCounter();
             saveTasksToLocalStorage();
@@ -58,12 +59,12 @@ document.addEventListener("DOMContentLoaded", function() {
         return taskItem;
     }
 
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
-  
+
         const input = form.querySelector(".addTodo__addNew");
         const taskText = input.value.trim();
-  
+
         if (taskText !== "") {
             const taskItem = createTaskItem(taskText, false);
             tasksList.appendChild(taskItem);
@@ -73,28 +74,28 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    deleteCompletedButton.addEventListener("click", function() {
+    deleteCompletedButton.addEventListener("click", function () {
         const checkedItems = tasksList.querySelectorAll("li input[type='checkbox']:checked");
-        checkedItems.forEach(function(item) {
+        checkedItems.forEach(function (item) {
             tasksList.removeChild(item.parentNode);
         });
         updateItemsLeftCounter();
         saveTasksToLocalStorage();
     });
 
-    allActiveButton.addEventListener("click", function() {
+    allActiveButton.addEventListener("click", function () {
         [...tasksList.children].forEach(task => {
             task.style.display = "flex";
         });
     });
 
-    activeButton.addEventListener("click", function() {
+    activeButton.addEventListener("click", function () {
         [...tasksList.children].forEach(task => {
             task.style.display = task.classList.contains("completed") ? "none" : "flex";
         });
     });
 
-    completedButton.addEventListener("click", function() {
+    completedButton.addEventListener("click", function () {
         [...tasksList.children].forEach(task => {
             task.style.display = task.classList.contains("completed") ? "flex" : "none";
         });
