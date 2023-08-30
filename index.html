@@ -1,36 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link href="/styles/styles.css" rel="stylesheet" />
+
   <title>Frontend Mentor | Todo app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
-<body>
+<body class="body">
+  <header class="body__header"></header>
+  <main class="body__main">
+    <div class="body__main__content">
+      <h2 class="body__main__content__h2">todo</h2>
+      <!--Dark Mode Swich -->
+      <div class="theme">
+        <span class="theme__toggle">
+          <img class="theme__toggle__light" src="./images/icon-sun.svg" alt="" />
+          <img class="theme__toggle__dark" src="./images/icon-moon.svg" alt="" />
+        </span>
 
-  Todo
+      </div>
+    </div>
 
-  <!-- Add dynamic number --> items left
+    <form class="addTodo">
+      <button type="submit" class="addTodo__btnaddNewBtn" aria-label="button">
+        <span class="addTodo__plusSigncheckbox">+</span>
+      </button>
+      <input
+        class="addTodo__addNew"
+        name="add"
+        type="text"
+        id="create"
+        placeholder="Create a new todo..."
+        aria-label="Create a new todo..."
+      />
+    </form>
 
-  All
-  Active 
-  Completed
+    <div class="container">
+      <div class="container__alert">New task added</div>
+      <div class="container__card">
+        <div>
+          <ul class="tasks"></ul>
+        </div>
 
-  Clear Completed
+        <div class="itemsleft">
+          <p class="itemsleft__counter">0 items left</p>
+          <button class="itemsleft__btnclear">Clear Completed</button>
+        </div>
+      </div>
 
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+      <div class="bottom">
+        <div class="btnfilter">
+          <button class="btnfilter__allactive" value="all">All</button>
+          <button class="btnfilter__activebtn" value="active">Active</button>
+          <button class="btnfilter__completed" value="completed">Completed</button>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p class="footer__dragtext">Drag and drop to reorder list</p>
+    </footer>
+  </main>
+  <script src="app/todoapp.js"></script>
+  <script src="app/darkmode.js"></script>
 </html>
