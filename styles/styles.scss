@@ -43,7 +43,6 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
     min-height: 100vh;
     max-width: 100vw;
     margin: 0;
-    user-select: none;
 
     &__header {
         height: 30vh;
@@ -83,8 +82,6 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
     }
 }
 
-
-
 .theme {
     &__toggle {
         &__dark {}
@@ -113,32 +110,53 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
     border-radius: 5px;
     margin-bottom: 0.1rem;
     box-shadow: -5px 0 20px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
 
-    &__button {}
+    &__btnaddNewBtn {
+        position: absolute;
+        margin: 1rem;
+        background: white;
+        border: 1px solid $darkdlightGrayishBlue;
+        padding: .5rem;
+        border-radius: 8px;
+
+        &:hover {
+            border: 1px solid $darkdlightGrayishBlue;
+            background: #0089ab;
+            border: none;
+            background-image: -webkit-linear-gradient(top, #0089ab, #7615a6);
+            background-image: -moz-linear-gradient(top, #0089ab, #7615a6);
+            background-image: -ms-linear-gradient(top, #0089ab, #7615a6);
+            background-image: -o-linear-gradient(top, #0089ab, #7615a6);
+            background-image: linear-gradient(to bottom, #0089ab, #7615a6);
+
+
+        }
+    }
 
     &__addNew {
         border: none;
         width: 100%;
         height: 3rem;
-        padding: 1rem;
+        padding: 1rem 3rem;
         border-radius: 5px;
         outline: none;
+        font-size: 1rem;
     }
 }
 
 .container {
+    &__alert {
+        display: none;
+    }
+
     &__card {
         background: white;
-        padding: 0.5rem 0.5rem 1rem 0.5rem;
         min-height: fit-content;
         min-height: 5rem;
         border-radius: 5px;
         margin-top: 2rem;
         box-shadow: -5px 0 20px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    &__alert {
-        display: none;
     }
 }
 
@@ -150,29 +168,22 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
         border: none;
         padding: 0;
         cursor: pointer;
+        margin-right: 1rem;
     }
-}
-
-.tasks li input[type=checkbox] {
-    background: $primarycheckbackground;
-    border-radius: 1;
 }
 
 .tasks li {
     justify-content: space-between;
     display: flex;
-    align-items: center;
-    grid-template-rows: 1fr;
+    text-align: left;
     padding: 1rem 0;
+    border-bottom: 1px solid #ccc;
 }
 
 .tasks li input[type='checkbox'] {
-    margin-right: 10px;
     order: -1;
-}
 
-.tasks li {
-    border-bottom: 1px solid #ccc;
+    margin-left: 1rem;
 }
 
 .bottom {
@@ -200,7 +211,8 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
         font-weight: 700;
         font-size: 1rem;
 
-        &:focus, &:active {
+        &:focus,
+        &:active {
             color: $primarybrightblue;
         }
 
@@ -215,6 +227,7 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
     &__dragtext {
         align-items: center;
         text-align: center;
+        font-size: 1rem;
     }
 }
 
@@ -222,7 +235,7 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
     justify-content: space-between;
     display: flex;
     align-items: center;
-    padding-top: 1rem;
+    padding: 1rem;
     font-size: 1rem;
     color: $lightdarkgrayishBlue;
 
@@ -233,5 +246,75 @@ $darkdverydarkGrayishBlue: hsl(237, 14%, 26%);
         cursor: pointer;
         color: $lightdarkgrayishBlue;
         font-size: 1rem;
+    }
+}
+
+.completed {
+    text-decoration: line-through;
+    color: $lightlightgrayishBlue;
+}
+
+// DARK MODE //
+
+body {
+    transition: background-color 0.3s, color 0.3s;
+
+    &.dark-mode {
+        background-color: $darkdarktverydarkblue;
+        color: #ffffff;
+
+        .theme__toggle__light {
+            display: inline-block;
+        }
+
+        .theme__toggle__dark {
+            display: none;
+        }
+
+        &__header {
+            background-image: url(/images/bg-desktop-dark.jpg) no-repeat left center/cover;
+        }
+    }
+}
+
+.theme__toggle__light {
+    display: none;
+}
+
+.theme__toggle__dark {
+    display: inline-block;
+}
+
+.addTodo__addNew {
+    transition: background-color 0.3s, color 0.3s;
+
+    &.dark-mode {
+        background-color: $darkdverydarkDesaturatedBlue;
+        color: white;
+    }
+}
+
+.container__card {
+    transition: background-color 0.3s, color 0.3s;
+
+    &.dark-mode {
+        background-color: $darkdverydarkDesaturatedBlue;
+
+    }
+}
+
+.bottom {
+    transition: background-color 0.3s, color 0.3s;
+
+    &.dark-mode {
+        background-color: $darkdverydarkDesaturatedBlue;
+    }
+}
+
+@media (min-width: 768px) {
+
+
+    .bottom {
+        display: none;
     }
 }

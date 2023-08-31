@@ -102,5 +102,5 @@ document.addEventListener("DOMContentLoaded", function () {
         updateItemsLeftCounter();
     });
 
-    loadTasksFromLocalStorage();
+    loadTasksFromLocalStorage;
 });
