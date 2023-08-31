@@ -16,7 +16,7 @@
   margin: 0;
 }
 .body__header {
-  height: 30vh;
+  height: 300px;
   background: url(/images/bg-mobile-light.jpg) no-repeat left center/cover;
   width: 100vw;
 }
